@@ -106,13 +106,13 @@ SELECT f.title AS 'Movie Category: Family Films' FROM film f
 WHERE c.name = 'Family';
 
 #7e. Display the most frequently rented movies in descending order.
-SELECT f.title AS 'Movie Title', COUNT(r.rental_id) AS 'Rental Count' FROM rental r
+SELECT f.title AS 'Movie Title', COUNT(r.inventory_id) AS 'Rental Count' FROM rental r
 	JOIN inventory i
 		ON i.inventory_id = r.inventory_id
 	JOIN film f
-		ON f.film_id = i.inventory_id
+		ON f.film_id = i.film_id
 GROUP BY f.title
-ORDER BY COUNT(r.rental_id) DESC;
+ORDER BY COUNT(r.inventory_id) DESC;
 
 #7f. Write a query to display how much business, in dollars, each store brought in.
 SELECT st.store_id, SUM(p.amount) AS 'Business Revenue($)' FROM payment p
